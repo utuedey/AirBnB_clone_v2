@@ -10,21 +10,21 @@ from os import getenv
 
 
 class State(BaseModel):
-    """ State class """
-     __tablename__ = 'states'
+   """ State class """
+   __tablename__ = 'states'
 
-     name = Column(String(128),
-                   nullable=False)
+   name = Column(String(128),
+                 nullable=False)
 
-     if os.getenv('HBNB_TYPE_STORAGE') == 'fs':
-         @property
-         def cities(self):
-             _cities = []
-             for _id, city in models.storage.all(City).items():
-                 if self.id == city.state_id:
-                    _cities.append(city)
-             return _cities
-     if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-         cities = relationship("City".
-                               backref="state",
-                               cascade="all, delete-orphan")
+   if os.getenv('HBNB_TYPE_STORAGE') == 'fs':
+       @property
+       def cities(self):
+           _cities = []
+           for _id, city in models.storage.all(City).items():
+               if self.id == city.state_id:
+                  _cities.append(city)
+           return _cities
+   if os.getenv('HBNB_TYPE_STORAGE') == 'db':
+       cities = relationship("City",
+                             backref="state",
+                             cascade="all, delete-orphan")
