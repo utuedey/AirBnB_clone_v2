@@ -24,13 +24,13 @@ class BaseModel:
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__" and hasattr(self, key):
                     setattr(self, key, value)
-            if self.id is None:
-                setattr(self, 'id', str(uuid.uuid4()))
+            if "id" not in kwargs.keys():
+                setattr(self, "id", str(uuid.uuid4()))
             time = datetime.now()
-            if self.created_at is None:
-                self.created_at = time
-            if self.updated_at is None:
-                self.updated_at = time
+            if "created_at" not in kwargs.keys():
+                setattr(self, "created_at", time)
+            if "updated_at" not in kwargs.keys():
+                setattr(self, "updated_at", time)
         else:
             self.id = str(uuid.uuid4())
             self.created_at = self.updated_at = datetime.now()
