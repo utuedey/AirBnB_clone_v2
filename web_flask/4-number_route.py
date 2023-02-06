@@ -41,10 +41,9 @@ def display_python_text(text):
 @app.route('/number/<int:n>', strict_slashes=False)
 def dispay_n_is_number(n):
     """Return a string at the /number/n route
-       only if n is an integer.
-    """
+    only if n is an integer."""
     if type(n) == int:
-        return f"{n} is a number"
+        return str(n) + " is a number"
 
 
 if __name__ == "__main__":
