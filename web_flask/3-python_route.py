@@ -13,7 +13,7 @@ def display_hello_hbnb():
 
 @app.route('/hbnb', strict_slashes=False)
 def display_hbnb():
-    """returns a string at the route"""
+    """returns a string at the /hbnb route"""
     return "HBNB"
 
 
@@ -27,8 +27,9 @@ def display_c_text(text):
         return "C " + text
 
 
-@app.route('/python/(<text>)', strict_slashes=False)
-def display_python_text(text="is cool"):
+@app.route('/python/', defaults={'text':'is cool'}, strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def display_python_text(text):
     underscore = "_"
     if underscore in text:
         return "Python " + text.replace(underscore, " ")
