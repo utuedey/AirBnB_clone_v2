@@ -28,7 +28,7 @@ def display_c_text(text):
 
 
 @app.route('/python/(<text>)', strict_slashes=False)
-def display_python_text(text='is cool'):
+def display_python_text(text="is cool"):
     underscore = "_"
     if underscore in text:
         return "Python " + text.replace(underscore, " ")
