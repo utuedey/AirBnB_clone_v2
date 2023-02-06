@@ -43,8 +43,8 @@ def dispay_n_is_number(n):
     """Return a string at the /number/n route
        only if n is an integer.
     """
-    if type(n) is int:
-        return "n is a number"
+    if type(n) == int:
+        return f"{n} is a number"
 
 
 if __name__ == "__main__":
